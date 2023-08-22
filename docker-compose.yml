@@ -1,0 +1,29 @@
+version: "3.7"
+services:
+  postgres:
+    image: postgres:10.5
+    #  profiles:
+    #   - dev
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data-dev:/var/lib/postgresql/data
+      # - ./init-scripts:/docker-entrypoint-initdb.d
+
+  postgres-test:
+    image: postgres:10.5
+    container_name: postgres-test
+    # env_file: .env.test
+    environment:
+      POSTGRES_USER: ${DB_USERNAME_TEST}
+      POSTGRES_PASSWORD: ${DB_PASSWORD_TEST}
+      POSTGRES_DB: ${DB_DATABASE_TEST}
+    ports:
+      - "5438:5432"
+    volumes:
+      - ./postgres_data-test:/var/lib/postgresql/data
