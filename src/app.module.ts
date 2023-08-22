@@ -24,7 +24,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
                     synchronize: true,
                     entities: [__dirname + '/**/*.entity{.js,.ts}'],
                 }),
-            }            
+            }
         )
     ]
 })
